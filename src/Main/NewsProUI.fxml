@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.NewsProUIController">
+   <children>
+      <AnchorPane fx:id="homePage" layoutX="13.0" layoutY="7.0" prefHeight="549.0" prefWidth="870.0" style="-fx-background-color: FFFFFF;" visible="false">
+         <children>
+            <JFXTextField fx:id="searchBar" layoutX="225.0" layoutY="305.0" prefHeight="52.0" prefWidth="524.0" promptText="What's  happening  today?" />
+            <ImageView fitHeight="23.0" fitWidth="26.0" layoutX="202.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/icons8-search-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="176.0" fitWidth="441.0" layoutX="259.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/截屏2020-04-08下午10.58.02.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="286.0" layoutY="369.0" onAction="#displayIntegratedSearchPage" prefHeight="39.0" prefWidth="123.0" text="Integrated Search" />
+            <JFXButton layoutX="409.0" layoutY="369.0" onAction="#displayMultimediaSearchPage" prefHeight="39.0" prefWidth="123.0" text="Multimedia Search" />
+            <JFXButton layoutX="532.0" layoutY="369.0" onAction="#displayBookSearchPage" prefHeight="39.0" prefWidth="123.0" text="Book Search" />
+            <JFXButton layoutX="14.0" layoutY="14.0" onAction="#initializeIndexing" text="Index News" />
+            <Label fx:id="indexResultLabel" layoutX="96.0" layoutY="19.0" prefHeight="17.0" prefWidth="272.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="integratedSearchPage" layoutX="57.0" layoutY="27.0" prefHeight="559.0" prefWidth="943.0" style="-fx-background-color: FFFFFF;" visible="false">
+         <children>
+            <JFXTextField fx:id="integratedSearchBar" layoutX="55.0" layoutY="3.0" prefHeight="52.0" prefWidth="608.0" promptText="What's  happening  today?" />
+            <ImageView fx:id="updateIntegreatedTable" fitHeight="23.0" fitWidth="26.0" layoutX="685.0" layoutY="29.0" onMouseClicked="#updateIntegreatedTable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/icons8-search-50.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="integreatedResultLabel" layoutX="55.0" layoutY="55.0" prefHeight="30.0" prefWidth="116.0" />
+            <TableView fx:id="table" layoutX="47.0" layoutY="89.0" prefHeight="452.0" prefWidth="671.0">
+              <columns>
+                <TableColumn fx:id="newsCol" prefWidth="465.0" text="News" />
+                <TableColumn fx:id="dateCol" prefWidth="73.0" text="Date" />
+                  <TableColumn fx:id="sourceCol" prefWidth="53.0" text="Source" />
+                  <TableColumn fx:id="readCol" prefWidth="79.0" text="Open" />
+              </columns>
+            </TableView>
+            <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="4.0" layoutY="9.0" onMouseClicked="#displayHomePage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/icon.jpg" />
+               </image>
+            </ImageView>
+            <TableView fx:id="wordTable" layoutX="745.0" layoutY="89.0" prefHeight="452.0" prefWidth="170.0">
+              <columns>
+                <TableColumn fx:id="wordCol" prefWidth="100.0" text="Words" />
+                <TableColumn fx:id="countCol" prefWidth="69.0" text="Count" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="multiMediaSearchPage" layoutX="1.0" layoutY="1.0" prefHeight="600.0" prefWidth="1010.0">
+         <children>
+            <JFXTextField fx:id="multiMediaSearchBar" layoutX="137.0" layoutY="7.0" prefHeight="52.0" prefWidth="608.0" promptText="What's  happening  today?" />
+            <ImageView fitHeight="23.0" fitWidth="26.0" layoutX="755.0" layoutY="33.0" onMouseClicked="#searchMultimediaTable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/icons8-search-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="78.0" layoutY="14.0" onMouseClicked="#displayHomePage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/icon.jpg" />
+               </image>
+            </ImageView>
+            <TableView fx:id="wsjTable" layoutX="26.0" layoutY="81.0" prefHeight="227.0" prefWidth="415.0">
+              <columns>
+                <TableColumn fx:id="wsjCol" prefWidth="352.0" text="Wall Streat Journal" />
+                  <TableColumn fx:id="wsjDateCol" prefWidth="62.0" text="Date" />
+              </columns>
+            </TableView>
+            <TableView fx:id="nytTable" layoutX="26.0" layoutY="336.0" prefHeight="234.0" prefWidth="415.0">
+               <columns>
+                  <TableColumn fx:id="nytCol" prefWidth="352.0" text="New York Times" />
+                  <TableColumn fx:id="nytDateCol" prefWidth="62.0" text="Date" />
+               </columns>
+            </TableView>
+            <TableView fx:id="scmpTable" layoutX="449.0" layoutY="90.0" prefHeight="126.0" prefWidth="541.0">
+               <columns>
+                  <TableColumn fx:id="scmpCol" prefWidth="475.0" text="South China Morning Post" />
+                  <TableColumn fx:id="scmpDateCol" prefWidth="65.0" text="Date" />
+               </columns>
+            </TableView>
+            <TableView fx:id="bbcTable" layoutX="449.0" layoutY="250.0" prefHeight="141.0" prefWidth="541.0">
+               <columns>
+                  <TableColumn fx:id="bbcCol" prefWidth="476.0" text="British Broadcasting Corporation" />
+                  <TableColumn fx:id="bbcDateCol" prefWidth="64.0" text="Date" />
+               </columns>
+            </TableView>
+            <TableView fx:id="twitterTable" layoutX="451.0" layoutY="416.0" prefHeight="155.0" prefWidth="541.0">
+              <columns>
+                <TableColumn fx:id="twitterCol" prefWidth="523.0" text="Twitter" />
+              </columns>
+            </TableView>
+            <Label fx:id="wsjLabel" layoutX="26.0" layoutY="312.0" prefHeight="17.0" prefWidth="150.0" />
+            <Label fx:id="nytLabel" layoutX="26.0" layoutY="578.0" prefHeight="17.0" prefWidth="162.0" />
+            <Label fx:id="bbcLabel" layoutX="451.0" layoutY="394.0" prefHeight="17.0" prefWidth="162.0" />
+            <Label fx:id="scmpLabel" layoutX="451.0" layoutY="224.0" prefHeight="17.0" prefWidth="162.0" />
+            <Label fx:id="twitterLabel" layoutX="451.0" layoutY="578.0" prefHeight="17.0" prefWidth="162.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="bookSearchPage" layoutX="67.0" layoutY="37.0" prefHeight="559.0" prefWidth="943.0" style="-fx-background-color: FFFFFF;" visible="false">
+         <children>
+            <JFXTextField fx:id="bookSearchBar" layoutX="55.0" layoutY="3.0" prefHeight="52.0" prefWidth="608.0" promptText="What's  happening  today?" />
+            <ImageView fitHeight="23.0" fitWidth="26.0" layoutX="685.0" layoutY="29.0" onMouseClicked="#searchBook" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/icons8-search-50.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="bookTable" layoutX="47.0" layoutY="89.0" prefHeight="452.0" prefWidth="704.0">
+               <columns>
+                  <TableColumn fx:id="bookCol" prefWidth="425.0" text="Title" />
+                  <TableColumn fx:id="yearCol" prefWidth="77.0" text="Year" />
+                  <TableColumn fx:id="sizeCol" prefWidth="60.0" text="Size" />
+                  <TableColumn fx:id="url1Col" prefWidth="74.0" text="Download" />
+                  <TableColumn fx:id="url2Col" prefWidth="67.0" text="Download" />
+               </columns>
+            </TableView>
+            <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="4.0" layoutY="9.0" onMouseClicked="#displayHomePage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../data/icon.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
